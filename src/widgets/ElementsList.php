@@ -104,7 +104,7 @@ class ElementsList extends \yii\base\Widget
             $bottomPanel = '';
 
             if ($this->showTotal) {
-                $bottomPanel .= Html::tag('div', Yii::t('cart', 'Total') . ': ' . yii::$app->cart->cost . ' '.yii::$app->cart->currency, ['class' => 'dvizh-cart-total-row']);
+                $bottomPanel .= Html::tag('div', Yii::t('cart', 'Total') . ': ' . yii::$app->cart->costFormatted , ['class' => 'dvizh-cart-total-row']);
             }
 
             if($this->offerUrl && $this->showOffer) {
@@ -149,7 +149,7 @@ class ElementsList extends \yii\base\Widget
             'model' => $item,
             'name' => $cartElName,
             'showCountArrows' => $this->showCountArrows,
-            'cost' => $this->_getCostFormatted($item->getCost(false)),
+            'cost' => yii::$app->cart->getFormatted($item->getCost(false)),
             'options' => $options,
             'otherFields' => $this->otherFields,
             'controllerActions' => $this->controllerActions,

@@ -184,7 +184,12 @@ class Cart extends Component
 
     public function getCostFormatted()
     {
-        $price = number_format($this->getCost(), $this->priceFormat[0], $this->priceFormat[1], $this->priceFormat[2]);
+        return $this->getFormatted($this->getCost());
+    }
+
+    public function getFormatted($amount)
+    {
+        $price = number_format($amount, $this->priceFormat[0], $this->priceFormat[1], $this->priceFormat[2]);
 
         if ($this->currencyPosition == 'after') {
             return "<span>$price</span>{$this->currency}";
