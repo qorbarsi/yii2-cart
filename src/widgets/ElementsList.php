@@ -30,6 +30,7 @@ class ElementsList extends \yii\base\Widget
     public $columns = 4;
     public $elementView = 'elementListRow';
     public $controllerActions = ['update' => '/cart/element/update','delete' => '/cart/element/delete'];
+    public $cartCssClass = '';
 
     public function init()
     {
@@ -49,6 +50,7 @@ class ElementsList extends \yii\base\Widget
             'showCountArrows' => $this->showCountArrows,
             'elementView' => $this->elementView,
             'controllerActions' => $this->controllerActions,
+            'cartCssClass' => $this->cartCssClass,
         ];
 
         foreach($paramsArr as $key => $value) {
@@ -93,11 +95,11 @@ class ElementsList extends \yii\base\Widget
         $elements = $this->cart->elements;
 
         if (empty($elements)) {
-            $cart = Html::tag('div', yii::t('cart', 'Your cart empty'), ['class' => 'dvizh-cart dvizh-empty-cart']);
+            $cart = Html::tag('div', yii::t('cart', 'Your cart empty'), ['class' => 'dvizh-cart dvizh-empty-cart '.$this->cartCssClass]);
         } else {
         	$cart = Html::ul($elements, ['item' => function($item, $index) {
                 return $this->_row($item);
-            }, 'class' => 'dvizh-cart-list']);
+            }, 'class' => 'dvizh-cart-list '.$this->cartCssClass]);
 		}
 
         if (!empty($elements)) {
