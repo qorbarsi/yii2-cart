@@ -1,5 +1,5 @@
 <?php
-namespace dvizh\cart\widgets; 
+namespace dvizh\cart\widgets;
 
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -10,7 +10,7 @@ class TruncateButton extends \yii\base\Widget
     public $text = NULL;
     public $cssClass = 'btn btn-danger';
     public $truncateCartUrl = '/cart/default/truncate';
- 
+
     public function init()
     {
         parent::init();
@@ -18,9 +18,9 @@ class TruncateButton extends \yii\base\Widget
         \dvizh\cart\assets\WidgetAsset::register($this->getView());
 
         if ($this->text == NULL) {
-            $this->text = yii::t('cart', 'Truncate');
+            $this->text = Yii::t('cart', 'Truncate');
         }
-        
+
         return true;
     }
 

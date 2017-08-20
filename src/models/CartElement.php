@@ -26,7 +26,7 @@ class CartElement extends \yii\db\ActiveRecord implements Element
     {
         return $this->getModel()->getCartName();
     }
-    
+
     public function getItemId()
     {
         return $this->item_id;
@@ -53,7 +53,7 @@ class CartElement extends \yii\db\ActiveRecord implements Element
 
         return $model;
     }
-    
+
     public function getModelName()
     {
         return $this->model;
@@ -150,7 +150,7 @@ class CartElement extends \yii\db\ActiveRecord implements Element
         $cost = 0;
         $costProduct = $this->getPrice($withTriggers);
         $cart = \Yii::$app->cart;
-        
+
         for($i = 0; $i < $this->count; $i++) {
             $currentCostProduct = $costProduct;
             if($withTriggers) {
@@ -160,13 +160,13 @@ class CartElement extends \yii\db\ActiveRecord implements Element
             }
             $cost = $cost+$currentCostProduct;
         }
-        
+
         if($withTriggers) {
             $elementEvent = new CartElementEvent(['element' => $this, 'cost' => $cost]);
             $cart->trigger($cart::EVENT_ELEMENT_COST, $elementEvent);
             $cost = $elementEvent->cost;
         }
-	    
+
         return $cost;
     }
 
@@ -202,14 +202,14 @@ class CartElement extends \yii\db\ActiveRecord implements Element
     public function attributeLabels()
     {
         return [
-            'id' => yii::t('cart', 'ID'),
-            'parent_id' => yii::t('cart', 'Parent element'),
-            'price' => yii::t('cart', 'Price'),
-            'hash' => yii::t('cart', 'Hash'),
-            'model' => yii::t('cart', 'Model name'),
-            'cart_id' => yii::t('cart', 'Cart ID'),
-            'item_id' => yii::t('cart', 'Item ID'),
-            'count' => yii::t('cart', 'Count'),
+            'id' => Yii::t('cart', 'ID'),
+            'parent_id' => Yii::t('cart', 'Parent element'),
+            'price' => Yii::t('cart', 'Price'),
+            'hash' => Yii::t('cart', 'Hash'),
+            'model' => Yii::t('cart', 'Model name'),
+            'cart_id' => Yii::t('cart', 'Cart ID'),
+            'item_id' => Yii::t('cart', 'Item ID'),
+            'count' => Yii::t('cart', 'Count'),
         ];
     }
 

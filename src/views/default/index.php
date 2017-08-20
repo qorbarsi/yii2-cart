@@ -5,11 +5,11 @@ use dvizh\cart\widgets\ChangeCount;
 use dvizh\cart\widgets\CartInformer;
 use dvizh\cart\widgets\ChangeOptions;
 
-$this->title = yii::t('cart', 'Cart');
+$this->title = Yii::t('cart', 'Cart');
 ?>
 
 <div class="cart">
-    <h1><?= yii::t('cart', 'Cart'); ?></h1>
+    <h1><?= Yii::t('cart', 'Cart'); ?></h1>
     <?php foreach($elements as $element) { ?>
         <div class="row">
             <div class="col-lg-6 col-xs-6">

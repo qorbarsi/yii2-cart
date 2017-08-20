@@ -18,6 +18,23 @@
  */
 return [
     'Buy' => '',
+    'Cart' => '',
+    'Cart (<span class="dvizh-cart-price">{p}</span>)' => '',
+    'Cart ID' => '',
+    'Count' => '',
+    'Created Time' => '',
+    'Hash' => '',
+    'ID' => '',
+    'Item ID' => '',
+    'Model name' => '',
+    'Offer' => '',
+    'Parent element' => '',
+    'Price' => '',
+    'Tmp user ID' => '',
     'Total' => '',
+    'Truncate' => '',
+    'Updated Time' => '',
+    'User ID' => '',
+    'Your cart empty' => '',
     'on' => '',
 ];

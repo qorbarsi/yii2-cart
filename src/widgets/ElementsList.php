@@ -74,7 +74,7 @@ class ElementsList extends \yii\base\Widget
         }
 
         if ($this->textButton == NULL) {
-            $this->textButton = yii::t('cart', 'Cart (<span class="dvizh-cart-price">{p}</span>)', ['c' => $this->cart->getCount(), 'p' => $this->cart->getCostFormatted()]);
+            $this->textButton = Yii::t('cart', 'Cart (<span class="dvizh-cart-price">{p}</span>)', ['c' => $this->cart->getCount(), 'p' => $this->cart->getCostFormatted()]);
         }
 
         if ($this->currency == NULL) {
@@ -95,7 +95,7 @@ class ElementsList extends \yii\base\Widget
         $elements = $this->cart->elements;
 
         if (empty($elements)) {
-            $cart = Html::tag('div', yii::t('cart', 'Your cart empty'), ['class' => 'dvizh-cart dvizh-empty-cart '.$this->cartCssClass]);
+            $cart = Html::tag('div', Yii::t('cart', 'Your cart empty'), ['class' => 'dvizh-cart dvizh-empty-cart '.$this->cartCssClass]);
         } else {
         	$cart = Html::ul($elements, ['item' => function($item, $index) {
                 return $this->_row($item);
@@ -110,7 +110,7 @@ class ElementsList extends \yii\base\Widget
             }
 
             if($this->offerUrl && $this->showOffer) {
-                $bottomPanel .= Html::a(yii::t('cart', 'Offer'), $this->offerUrl, ['class' => 'dvizh-cart-offer-button btn btn-success']);
+                $bottomPanel .= Html::a(Yii::t('cart', 'Offer'), $this->offerUrl, ['class' => 'dvizh-cart-offer-button btn btn-success']);
             }
 
             if($this->showTruncate) {
