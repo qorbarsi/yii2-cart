@@ -229,7 +229,7 @@ class Cart extends Component
             'element' => $element,
         ]);
         $this->trigger(self::EVENT_ELEMENT_BEFORE_DELETE, $eventBeforeDelete);
-        
+
         if ($element->delete()) {
 
             // TODO DRY

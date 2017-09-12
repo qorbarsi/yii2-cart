@@ -75,6 +75,7 @@ class CartElement extends \yii\db\ActiveRecord implements Element
 
     public function setCount($count, $andSave = false)
     {
+        $count = ($count >= 0) ? $count : 0;
         $this->count = $count;
 
         if($andSave) {
@@ -84,7 +85,6 @@ class CartElement extends \yii\db\ActiveRecord implements Element
                     'cost' => yii::$app->cart->getCost(),
                     'count' => yii::$app->cart->getCount(),
                 ]);
-
                 $cartComponent = yii::$app->cart;
                 $cartComponent->trigger($cartComponent::EVENT_CART_UPDATE, $elementEvent);
             }
@@ -93,9 +93,10 @@ class CartElement extends \yii\db\ActiveRecord implements Element
 
     public function countIncrement($count)
     {
-        $this->count = $this->count+$count;
-
-        return $this->save();
+        $count = ($count > 0) ? $count : 0;
+        $this->setCount($this->count+$count,true);
+        //$this->count = $this->count+$count;
+        //return $this->save();
     }
 
     public function getPrice($withTriggers = true)
@@ -192,10 +193,10 @@ class CartElement extends \yii\db\ActiveRecord implements Element
         if (class_exists($model)) {
             $elementModel = new $model();
             if (!$elementModel instanceof \dvizh\cart\interfaces\CartElement) {
-                $this->addError($attribute, 'Model implement error');
+                $this->addError($attribute, Yii::t('cart','Model implement error'));
             }
         } else {
-            $this->addError($attribute, 'Model not exists');
+            $this->addError($attribute, Yii::t('cart','Model not exists'));
         }
     }
 
