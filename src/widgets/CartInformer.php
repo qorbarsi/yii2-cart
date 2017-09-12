@@ -13,6 +13,7 @@ class CartInformer extends \yii\base\Widget
     public $cssClass = NULL;
     public $htmlTag = 'span';
     public $showOldPrice = true;
+    public $withHref = true;
 
     public function init()
     {
@@ -23,11 +24,11 @@ class CartInformer extends \yii\base\Widget
         if ($this->offerUrl == NULL) {
             $this->offerUrl = Url::toRoute(["/cart/default/index"]);
         }
-        
+
         if ($this->text === NULL) {
             $this->text = '{c} '. Yii::t('cart', 'on').' {p}';
         }
-        
+
         return true;
     }
 
@@ -46,10 +47,16 @@ class CartInformer extends \yii\base\Widget
                 $this->text
             );
         }
-        
-        return Html::tag($this->htmlTag, $this->text, [
-                'href' => $this->offerUrl,
-                'class' => "dvizh-cart-informer {$this->cssClass}",
-        ]);
+
+        if ($this->withHref) {
+            return Html::tag($this->htmlTag, $this->text, [
+                    'href' => $this->offerUrl,
+                    'class' => "dvizh-cart-informer {$this->cssClass}",
+            ]);
+        } else {
+            return Html::tag($this->htmlTag, $this->text, [
+                    'class' => "dvizh-cart-informer {$this->cssClass}",
+            ]);
+        }
     }
 }
