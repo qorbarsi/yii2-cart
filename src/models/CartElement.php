@@ -213,16 +213,6 @@ class CartElement extends \yii\db\ActiveRecord implements Element
     public function attributeLabels()
     {
         return [
-<<<<<<< HEAD
-            'id' => Yii::t('cart', 'ID'),
-            'parent_id' => Yii::t('cart', 'Parent element'),
-            'price' => Yii::t('cart', 'Price'),
-            'hash' => Yii::t('cart', 'Hash'),
-            'model' => Yii::t('cart', 'Model name'),
-            'cart_id' => Yii::t('cart', 'Cart ID'),
-            'item_id' => Yii::t('cart', 'Item ID'),
-            'count' => Yii::t('cart', 'Count'),
-=======
             'id' => yii::t('cart', 'ID'),
             'parent_id' => yii::t('cart', 'Parent element'),
             'price' => yii::t('cart', 'Price'),
@@ -232,7 +222,6 @@ class CartElement extends \yii\db\ActiveRecord implements Element
             'item_id' => yii::t('cart', 'Item ID'),
             'count' => yii::t('cart', 'Count'),
             'comment' => yii::t('cart', 'Comment'),
->>>>>>> dvizh/master
         ];
     }
 
